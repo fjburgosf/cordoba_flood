@@ -200,7 +200,7 @@ def fig_pairs(base):
         ax.set_title(f"{a}–{b} (τ={tau:.2f})", fontsize=9)
         ax.set_xlabel(f"u({a})"); ax.set_ylabel(f"u({b})")
         ax.set_xlim(0, 1); ax.set_ylim(0, 1); ax.grid(alpha=0.3)
-    fig.suptitle("Pseudo-observaciones (escala cópula) — dependencia entre drivers")
+    fig.suptitle("Pseudo-observations (copula scale) — dependence between drivers")
     fig.tight_layout(); fig.savefig(FIG / "copula_pairs.png", dpi=300); plt.close(fig)
 
 

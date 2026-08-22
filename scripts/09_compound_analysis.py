@@ -205,10 +205,10 @@ def fig_severity(base, df, path):
     ax.hist(F, bins=60, color="#9ecae1", alpha=0.8, label="Baseline (2000–2025)")
     for s in sevs:
         ax.axvline(s, color="#d7301f", lw=1.2, alpha=0.7)
-    ax.axvline(max(sevs), color="#d7301f", lw=2, label="Evento 2026 (severidad)")
-    ax.set_xlabel("Severidad conjunta (promedio de CDFs P, SM, Qs)")
-    ax.set_ylabel("Días")
-    ax.set_title("Severidad compound histórica — evento 2026 a la derecha")
+    ax.axvline(max(sevs), color="#d7301f", lw=2, label="Event 2026 (severity)")
+    ax.set_xlabel("Joint severity (mean of P, SM, Qs CDFs)")
+    ax.set_ylabel("Days")
+    ax.set_title("Historical compound severity — 2026 event at right")
     ax.legend(fontsize=8)
     fig.tight_layout(); fig.savefig(path, dpi=300); plt.close(fig)
 
@@ -223,7 +223,7 @@ def fig_conditional(report, path):
           a["ci_PSM"][1] - a["P_Qs_extreme_given_P_and_SM_extreme"]]
     ax.bar([0, 1], vals, 0.5, yerr=[lo, hi], capsize=5, color=["#08519c", "#d7301f"])
     ax.set_xticks([0, 1]); ax.set_xticklabels(["P(Qs>q | P>p)", "P(Qs>q | P>p & SM>s)"])
-    ax.set_ylabel("Probabilidad"); ax.set_title("Efecto condicional de la humedad de suelo (umbral 90%)")
+    ax.set_ylabel("Probability"); ax.set_title("Conditional effect of soil moisture (90% threshold)")
     ax.grid(alpha=0.3)
     fig.tight_layout(); fig.savefig(path, dpi=300); plt.close(fig)
 

@@ -167,7 +167,7 @@ def qc_and_report(path):
     fig, ax = plt.subplots(figsize=(11, 3.5))
     ax.plot(s.index, s.values, lw=0.4, color="#08519c")
     ax.axvspan(pd.Timestamp(EVENT[0]), pd.Timestamp(EVENT[1]), color="yellow", alpha=0.3)
-    ax.set_ylabel("Precip (mm/d)"); ax.set_title("CHIRPS — media en cuenca Sinú (1981→)")
+    ax.set_ylabel("Precip (mm/d)"); ax.set_title("CHIRPS — basin mean, Sinú (1981–)")
     fig.autofmt_xdate(); fig.tight_layout()
     fig.savefig(FIG / "chirps_basin_timeseries.png", dpi=300)
     print("[ok] QC + reporte + figura escritos")

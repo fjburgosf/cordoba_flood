@@ -279,7 +279,7 @@ def write_report(qc, series):
             a.plot(series[k].index, series[k].values, lw=0.4, color="#08519c")
             a.set_ylabel(k, fontsize=7)
             a.axvspan(pd.Timestamp(EVENT[0]), pd.Timestamp(EVENT[1]), color="yellow", alpha=0.25)
-        fig.suptitle("Histórico diario media-en-cuenca (Sinú) — evento 1–6 feb 2026 sombreado")
+        fig.suptitle("Basin-mean daily history (Sinú) — event 1–6 Feb 2026 shaded")
         fig.autofmt_xdate(); fig.tight_layout()
         fig.savefig(FIG / "historical_basin_timeseries.png", dpi=300)
     print("[ok] QC + reporte + figura escritos")

@@ -116,9 +116,9 @@ def fig_map(c, p, g, path):
     fig, ax = plt.subplots(figsize=(9, 10))
     pc = ax.pcolormesh(lon, lat, p[::-1, :], cmap="YlGnBu", shading="auto")
     g.plot(ax=ax, facecolor="none", edgecolor="red", linewidth=0.3, alpha=0.8)
-    ax.set_title("Precipitación del evento (1–6 feb 2026, CHIRPS) y extensión inundada (EMS)")
-    ax.set_xlabel("Longitud"); ax.set_ylabel("Latitud")
-    fig.colorbar(pc, ax=ax, label="Precip acumulada (mm)")
+    ax.set_title("Event precipitation (1–6 Feb 2026, CHIRPS) and flood extent (EMS)")
+    ax.set_xlabel("Longitude"); ax.set_ylabel("Latitude")
+    fig.colorbar(pc, ax=ax, label="Accumulated precip (mm)")
     fig.tight_layout(); fig.savefig(path, dpi=300); plt.close(fig)
 
 

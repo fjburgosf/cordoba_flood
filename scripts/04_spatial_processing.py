@@ -145,10 +145,10 @@ def main() -> None:
     gdf.boundary.plot(ax=ax, color="0.85", linewidth=0.3)
     sinu.plot(ax=ax, color="#4a90d9", edgecolor="white", linewidth=0.2, alpha=0.7)
     basin.boundary.plot(ax=ax, color="#08306b", linewidth=1.5)
-    ax.plot(SEED_LON, SEED_LAT, "r*", ms=14, label="Montería (semilla)")
+    ax.plot(SEED_LON, SEED_LAT, "r*", ms=14, label="Montería (seed)")
     ax.set_xlim(BBOX[0], BBOX[2]); ax.set_ylim(BBOX[1], BBOX[3])
     ax.set_xlabel("Lon"); ax.set_ylabel("Lat")
-    ax.set_title(f"Cuenca del río Sinú — HydroBASINS lev{LEVEL}\n"
+    ax.set_title(f"Sinú River basin — HydroBASINS lev{LEVEL}\n"
                  f"{len(sinu)} sub-basins · ≈{area_km2:,.0f} km²")
     ax.legend(loc="upper right")
     fig.tight_layout()

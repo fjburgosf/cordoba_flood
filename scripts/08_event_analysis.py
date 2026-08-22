@@ -201,14 +201,14 @@ def fig_hydrograph(chirps, imerg, gldas, merra, urra, path):
     axs[0].set_ylabel("Precip (mm/d)"); axs[0].legend(fontsize=8, ncol=2)
     axs[1].plot(gldas.loc[sl].index, gldas["GLDAS_Qs_runoff_mm_day"].loc[sl], color="#08519c", lw=1.4)
     axs[1].set_ylabel("GLDAS Qs (mm/d)")
-    axs[2].plot(urra.loc[sl].index, urra["aportes_caudal_m3s"].loc[sl], color="#d7301f", lw=1.4, label="aportes")
-    axs[2].plot(urra.loc[sl].index, urra["descarga_total_m3s"].loc[sl], color="#636363", lw=1.4, ls="--", label="descarga")
+    axs[2].plot(urra.loc[sl].index, urra["aportes_caudal_m3s"].loc[sl], color="#d7301f", lw=1.4, label="inflow")
+    axs[2].plot(urra.loc[sl].index, urra["descarga_total_m3s"].loc[sl], color="#636363", lw=1.4, ls="--", label="discharge")
     axs[2].set_ylabel("Urrá (m³/s)"); axs[2].legend(fontsize=8)
     axs[3].plot(merra.loc[sl].index, merra["TQV_kg_m2"].loc[sl], color="#6a51a3", lw=1.4)
     axs[3].set_ylabel("TQV (kg/m²)")
     for a in axs:
         a.axvspan(pd.Timestamp(EVENT[0]), pd.Timestamp(EVENT[1]), color="yellow", alpha=0.22)
-    fig.suptitle("Evento Córdoba 2026 — hidrograma (25 ene–15 feb)", fontsize=12)
+    fig.suptitle("Córdoba 2026 event — hydrograph (25 Jan–15 Feb)", fontsize=12)
     fig.autofmt_xdate(); fig.tight_layout()
     fig.savefig(path, dpi=300); plt.close(fig)
 
@@ -224,11 +224,11 @@ def fig_return_level(am, gev, obs, path):
     else:
         y = loc + sc / c * (1 - (-np.log(1 - 1 / T)) ** c)
     fig, ax = plt.subplots(figsize=(8, 5.5))
-    ax.semilogx(T_emp, x, "o", ms=5, color="#08519c", label="Máximos anuales (empírico)")
-    ax.semilogx(T, y, "-", color="#d7301f", lw=2, label="GEV ajustado")
-    ax.axhline(obs, color="black", ls="--", lw=1, label=f"Evento Rx1day={obs:.1f} mm")
-    ax.set_xlabel("Periodo de retorno (años)"); ax.set_ylabel("Precipitación (mm/d)")
-    ax.set_title("Nivel de retorno — CHIRPS media-en-cuenca (Sinú)")
+    ax.semilogx(T_emp, x, "o", ms=5, color="#08519c", label="Annual maxima (empirical)")
+    ax.semilogx(T, y, "-", color="#d7301f", lw=2, label="GEV fitted")
+    ax.axhline(obs, color="black", ls="--", lw=1, label=f"Event Rx1day={obs:.1f} mm")
+    ax.set_xlabel("Return period (years)"); ax.set_ylabel("Precipitation (mm/d)")
+    ax.set_title("Return levels — CHIRPS basin mean (Sinú)")
     ax.legend(fontsize=9); ax.grid(alpha=0.3)
     fig.tight_layout(); fig.savefig(path, dpi=300); plt.close(fig)
 
@@ -240,7 +240,7 @@ def fig_scatter(imerg, chirps, path):
     lo, hi = min(df.min().min(), 0), df.max().max()
     ax.plot([lo, hi], [lo, hi], "k--", lw=1)
     ax.set_xlabel("CHIRPS (mm/d)"); ax.set_ylabel("IMERG (mm/d)")
-    ax.set_title("IMERG vs CHIRPS — ventana evento (ene–feb 2026)")
+    ax.set_title("IMERG vs CHIRPS — event window (Jan–Feb 2026)")
     ax.grid(alpha=0.3)
     fig.tight_layout(); fig.savefig(path, dpi=300); plt.close(fig)
 

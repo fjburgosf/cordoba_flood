@@ -315,7 +315,7 @@ def main():
     # ---------- PLOTS
     fig, ax = plt.subplots(4, 1, figsize=(10, 11), sharex=True)
     ax[0].bar(s_pr.index, s_pr.values, color="#08519c"); ax[0].set_ylabel("Precip\n(mm/d)")
-    ax[0].set_title("Piloto Sinú — señal hidroclimática diaria ene–feb 2026 (media en cuenca)")
+    ax[0].set_title("Sinú pilot — daily hydroclimatic signal Jan–Feb 2026 (basin mean)")
     ax[1].plot(s_tqv.index, s_tqv.values, color="#54278f"); ax[1].set_ylabel("TQV\n(kg/m²)")
     ax[1].plot(s_t2.index, s_t2.values, color="#e6550d", alpha=.6, label="T2M °C"); ax[1].legend(fontsize=7)
     ax[2].plot(s_sm.index, s_sm.values, color="#006d2c"); ax[2].set_ylabel("SoilMoi\n0-10cm")
@@ -326,9 +326,9 @@ def main():
     # mapa: acumulado de precip del evento
     ev = imerg.sel(time=slice(*EVENT)).sum("time")
     fig2, ax2 = plt.subplots(figsize=(6, 7))
-    ev.transpose("lat", "lon").plot(ax=ax2, cmap="Blues", cbar_kwargs={"label": "Precip acumulada 1-6 feb (mm)"})
+    ev.transpose("lat", "lon").plot(ax=ax2, cmap="Blues", cbar_kwargs={"label": "Accumulated precip 1–6 Feb (mm)"})
     BASIN.boundary.plot(ax=ax2, color="k", linewidth=1.2)
-    ax2.set_title("IMERG Late — acumulado evento 1–6 feb 2026"); fig2.tight_layout()
+    ax2.set_title("IMERG Late — event accumulation 1–6 Feb 2026"); fig2.tight_layout()
     fig2.savefig(FIG/"pilot_event_precip_map.png", dpi=300)
 
     # ---------- REPORTE QC
