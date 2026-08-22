@@ -1,0 +1,43 @@
+# Entorno reproducible — proyecto Flood Córdoba (Python 3.12)
+# Núcleo numérico / estadística
+numpy>=1.26
+pandas>=2.2
+scipy>=1.11
+statsmodels>=0.14
+scikit-learn>=1.4
+
+# Datos climáticos NetCDF / raster
+xarray>=2024.6
+netCDF4>=1.6
+h5netcdf>=1.3
+dask>=2024.6
+rioxarray>=0.15
+rasterio>=1.3
+
+# Geoespacial vectorial (máscara cuenca Sinú, HydroBASINS)
+geopandas>=1.0
+shapely>=2.0
+pyproj>=3.6
+fiona>=1.9
+pyogrio>=0.8
+regionmask>=0.12
+
+# Extremos / hidrología / ML explicable
+xclim>=0.52
+lmoments3>=1.0
+pyextremes>=2.3
+xgboost>=2.0
+shap>=0.45
+
+# Visualización / mapas
+matplotlib>=3.8
+cartopy>=0.23
+seaborn>=0.13
+
+# Acceso a datos / utilidades
+earthaccess>=0.18       # NASA Earthdata Login + búsqueda/descarga GES DISC
+pydap>=3.5              # OPeNDAP (subsetting servidor-lado)
+pydataxm>=0.3           # API XM (Urrá/Sinú)
+requests>=2.31
+tqdm>=4.66
+pyyaml>=6.0

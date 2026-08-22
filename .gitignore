@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Data (large / derived / raw) — NOT tracked
+data/
+results/
+figures/
+tables/
+*.nc
+*.csv
+*.gpkg
+*.geojson
+*.zip
+*.tif
+*.shp
+*.dbf
+*.shx
+*.prj
+
+# Manuscript & documentation — NOT tracked
+manuscript/
+docs/
+
+# Logs & scratch
+logs/
+*.log
+*.err
+scratch_*
+
+# Credentials & secrets
+.cdsapirc
+*.token
+.env
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Cline / project context (not published)
+.clineignore
+.clineignore.bak
+CLAUDE.md
+CLAUDE.md.bak
