@@ -228,6 +228,21 @@ def fig_conditional(report, path):
     fig.tight_layout(); fig.savefig(path, dpi=300); plt.close(fig)
 
 
+def fig_urra(urra, path):
+    win = urra.loc["2026-01-25":"2026-02-15"]
+    fig, ax = plt.subplots(3, 1, figsize=(10, 8), sharex=True)
+    ax[0].plot(win.index, win["aportes_caudal_m3s"], color="#08519c", lw=1.2, label="inflow")
+    ax[0].plot(win.index, win["aportes_mediahist_m3s"], color="#bdbdbd", ls="--", label="hist. same-day mean")
+    ax[0].set_ylabel("Inflow (m\u00b3/s)"); ax[0].legend(fontsize=8)
+    ax[1].plot(win.index, win["descarga_total_m3s"], color="#993404", lw=1.2, label="total discharge")
+    ax[1].set_ylabel("Discharge (m\u00b3/s)"); ax[1].legend(fontsize=8)
+    ax[2].plot(win.index, win["volumen_util_pct"] * 100, color="#006d2c", lw=1.2, label="useful storage %")
+    ax[2].set_ylabel("Storage (% useful)"); ax[2].legend(fontsize=8)
+    fig.suptitle("Urr\u00e1 reservoir \u2014 event balance (25 Jan\u201315 Feb 2026)")
+    fig.autofmt_xdate(); fig.tight_layout()
+    fig.savefig(path, dpi=300); plt.close(fig)
+
+
 def main():
     chirps, gldas, urra = load()
     df, base = common_frame(chirps, gldas)
@@ -252,6 +267,7 @@ def main():
 
     fig_severity(base, df, FIG / "compound_severity.png")
     fig_conditional(report, FIG / "conditional_probability.png")
+    fig_urra(urra, FIG / "urra_event_balance.png")
 
     (RES / "compound_analysis.json").write_text(
         json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
