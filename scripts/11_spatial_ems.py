@@ -41,6 +41,8 @@ EVENT = ("2026-02-01", "2026-02-06")
 
 def load_flood():
     g = gpd.read_file(EMS_SHP)  # EPSG:4326
+    basin = gpd.read_file(PROC / "sinu_basin.gpkg")  # clip to Sinú (avoids San Jorge contamination)
+    g = g.clip(basin.geometry)
     g_utm = g.to_crs(epsg=32618)  # UTM 18N (áreas en m²)
     g["area_km2"] = g_utm.geometry.area / 1e6
     return g
